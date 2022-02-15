@@ -1,0 +1,6 @@
+{
+    "name": "drupal/acquia_cms_article_author",
+    "type": "drupal-module",
+    "description": "Provides an author referenced field for article content types and related configuration.",
+    "license": "GPL-2.0-or-later"
+}

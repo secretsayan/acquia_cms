@@ -6,6 +6,8 @@ dependencies:
   enforced:
     module:
       - acquia_cms_article
+      - acquia_cms_person
+      - acquia_cms_article_author
 id: node.field_display_author
 field_name: field_display_author
 entity_type: node

@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall method for acquia_cms_article_author module.
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * Set field_display_author setting on module install.
+ */
+function acquia_cms_article_author_install() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('core.entity_form_display.node.article.default');
+  // Only update field_display_author config if
+  // it's not already there in the system.
+  if (!$config->get('content.field_display_author')) {
+    $config->set('content.field_display_author', [
+      'weight' => 3,
+      'settings' => [
+        'match_operator' => 'CONTAINS',
+        'match_limit' => 10,
+        'size' => 60,
+        'placeholder' => '',
+      ],
+      'third_party_settings' => [],
+      'type' => 'entity_reference_autocomplete',
+      'region' => 'content',
+    ]);
+    $config->save(TRUE);
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ *
+ * Clear field_display_author setting on module uninstall.
+ */
+function acquia_cms_article_author_uninstall() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('core.entity_form_display.node.article.default');
+  $config->clear('content.field_display_author');
+  $config->save(TRUE);
+}

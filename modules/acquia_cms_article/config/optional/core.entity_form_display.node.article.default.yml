@@ -7,7 +7,6 @@ dependencies:
     - field.field.node.article.field_article_media
     - field.field.node.article.field_article_type
     - field.field.node.article.field_categories
-    - field.field.node.article.field_display_author
     - field.field.node.article.field_tags
     - node.type.article
     - workflows.workflow.editorial
@@ -97,16 +96,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
-    region: content
-  field_display_author:
-    weight: 3
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
     region: content
   field_tags:
     weight: 9
